@@ -28,7 +28,8 @@
         let fila = document.getElementById('fila');
         let carta = document.createElement('div');
         carta.classList.add('col-xl-3');
-        carta.classList.add('col-md-4');
+        carta.classList.add('col-lg-4');
+        carta.classList.add('col-md-6');
         carta.classList.add('justify-content-between');
         carta.classList.add('cartas')
         carta.setAttribute('id', pokemons[i].id);
