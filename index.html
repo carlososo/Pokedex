@@ -9,13 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
 
-
 </head>
 
 <body>
     <header class="container borde-abajo">
         <figure class="d-flex justify-content-center mt-5">
-            <img src="img/International_Pokémon_logo.svg" alt="">
+            <a href="#"><img src="img/International_Pokémon_logo.svg" alt=""></a>
         </figure>
 
     </header>
@@ -36,7 +35,45 @@
     <script src="js/script.js "></script>
 </body>
 
+
 </html>
+
+
+<!-- Modal  -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pokemon</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-5">
+                    <img src="" id="imagenModal" alt="">
+                </div>
+                <div class="col-7">
+                    <h2>Nombre:</h3>
+                        <p>English:<span class="atributos" id="english"></span></p>
+                        <p>Japanese:<span class="atributos" id="japanese"></span></p>
+                        <h2>Atributos:</h3> <span class="atributos" id="english"></span>
+                            <p>HP:<span class="atributos" id="hp"></span></p>
+                            <p>Attack:<span class="atributos" id="att"></span></p>
+                            <p>Defense:<span class="atributos" id="def"></span></p>
+                            <p>Sp. Attack: <span class="atributos" id="satt"></span></p>
+                            <p>Sp. Defence:<span class="atributos" id="sdef"></span></p>
+                            <p>Speed:<span class="atributos" id="spd"></span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- <div class="col-lg-3 justify-content-between" id="cartas">
                     <div class="card borde">

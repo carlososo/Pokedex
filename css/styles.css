@@ -68,7 +68,11 @@ img {
     margin-bottom: 0;
 }
 
-#cartas:hover {
+.cartas:hover {
     transform: translateY(-5px);
     cursor: pointer;
+}
+
+.atributos {
+    font-weight: 700;
 }

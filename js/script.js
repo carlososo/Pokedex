@@ -19,7 +19,10 @@
     let dragon = "#f16e57";
     let siniestro = "#707070";
 
+    function modalPokemon() {
 
+
+    }
     for (let i = 0; i <= pokemons.length - 1; i++) {
 
         let fila = document.getElementById('fila');
@@ -27,28 +30,46 @@
         carta.classList.add('col-xl-3');
         carta.classList.add('col-md-4');
         carta.classList.add('justify-content-between');
-        carta.id = 'cartas';
-        carta.innerHTML = `<div class="card borde mt-5">
-    <figure class="borde fondo-imagen ">
-        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${idPokemon(pokemons[i].id)}.png " class="card-img-top " alt="... ">
-    </figure>
-    <div class="card-body ">
-        <p class="text-muted " id="numero ">N. ${idPokemon(pokemons[i].id)}</p>
-        <p id="nombre ">${pokemons[i].name.english}</p>
-        <div class="d-flex justify-content-center ">
-            <div class="tipo1 mr-5">
-                <p class="ptipo1">${pokemons[i].type[0]}</p>
-            </div>
-            <div class="tipo2 ">
-                <p class="ptipo2">${pokemons[i].type[1]}</p>
-            </div>
-        </div>
-    </div>
-</div>`
+        carta.classList.add('cartas')
+        carta.setAttribute('id', pokemons[i].id);
+        carta.innerHTML = `<div class="card borde mt-5" >
+        
+                                <figure class="borde fondo-imagen ">
+                                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${idPokemon(pokemons[i].id)}.png " class="card-img-top " alt="... ">
+                                </figure>
+                                <div class="card-body ">
+                                    <p class="text-muted " id=" ">N. ${idPokemon(pokemons[i].id)}</p>
+                                    <p id="nombre${idPokemon(pokemons[i].id)} ">${pokemons[i].name.english}</p>
+                                    <div class="d-flex justify-content-center ">
+                                        <div class="tipo1 mr-5">
+                                            <p class="ptipo1">${pokemons[i].type[0]}</p>
+                                        </div>
+                                        <div class="tipo2 ">
+                                            <p class="ptipo2">${pokemons[i].type[1]}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+
+
         fila.appendChild(carta)
 
-
+        carta.addEventListener('click', function(event) {
+            $('#exampleModal').modal('show');
+            document.getElementById('exampleModalLabel').innerHTML = pokemons[i].name.english;
+            document.getElementById('imagenModal').setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${idPokemon(pokemons[i].id)}.png`)
+            document.getElementById('english').innerHTML = "   " + pokemons[i].name.english;
+            document.getElementById('japanese').innerHTML = "   " + pokemons[i].name.japanese;
+            document.getElementById('hp').innerHTML = "   " + pokemons[i].base.HP;
+            document.getElementById('att').innerHTML = "   " + pokemons[i].base.Attack;
+            document.getElementById('def').innerHTML = "   " + pokemons[i].base.Defense;
+            document.getElementById('satt').innerHTML = "   " + pokemons[i].base["Sp. Attack"];
+            document.getElementById('sdef').innerHTML = "   " + pokemons[i].base["Sp. Defense"];
+            document.getElementById('spd').innerHTML = "   " + pokemons[i].base.Speed
+        });
     }
+
+
 
     let tipoPokemon = document.getElementsByClassName('tipo1');
     let tipoPokemon2 = document.getElementsByClassName('tipo2');
@@ -56,6 +77,7 @@
     cambiarColor(tipoPokemon, 'ptipo1');
     cambiarColor(tipoPokemon2, 'ptipo2');
 
+    //funcion para cambiar de color a los botones dependiendo de las clases de los Pokemones
     function cambiarColor(tipo, content) {
         for (let elementosP in tipo) {
             try {
@@ -126,7 +148,7 @@
         }
     }
 
-
+    //funcion para sacar los 00 y 0 para las fotos chiditas de los pokemons 
     function idPokemon(data) {
         data = data + "";
         if (data.length > 0 && data.length < 2) {
@@ -138,6 +160,11 @@
         } else
             return data;
     }
+
+
+    // funcion para el modal con la informacion del pokemon
+
+
 
 
 
