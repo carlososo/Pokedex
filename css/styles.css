@@ -1,0 +1,74 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    margin-top: 0;
+    background-image: url(../img/pokemon-lets-go-pikachu-eevee.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+img {
+    max-width: 100%;
+}
+
+.borde-abajo {
+    border-bottom: 2px solid #FFCB05;
+}
+
+.fondo-imagen {
+    background-color: #f2f2f2;
+}
+
+.borde {
+    border-radius: 15px;
+}
+
+#numero {
+    font-weight: 700;
+    color: lightgray;
+}
+
+#nombre {
+    font-weight: 700;
+}
+
+.tipo1 {
+    font-size: 1.3rem;
+    border-radius: 7px;
+    padding: .1rem 1.5rem;
+    padding: 0 3rem;
+}
+
+.tipo2 {
+    font-size: 1.3rem;
+    color: white;
+    border-radius: 7px;
+    padding: 0 3rem;
+}
+
+.ptipo1 {
+    margin-bottom: 0;
+}
+
+.ptipo2 {
+    margin-bottom: 0;
+}
+
+#cartas:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
