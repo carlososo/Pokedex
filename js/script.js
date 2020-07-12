@@ -120,6 +120,8 @@
             if (pokemons[p].name.english.includes(busqueda) || pokemons[p].id == busqueda) {
                 busquedaPokemons.push(pokemons[p])
                 insertarPokemons(pokemons[p], 'center');
+            } else {
+                alert('Whooops! nothing here to find, hombre')
             }
         }
         cambiarColor(tipoPokemon, 'ptipo1');
