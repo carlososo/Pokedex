@@ -14,6 +14,33 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
+/* Importando las fuentes */
+
+@font-face {
+    /* font-family: unknown;
+    src: url(../font/Unown.ttf); */
+    font-family: poke-hollow;
+    src: url(../font/Pokemon\ Hollow.ttf)
+}
+
+@font-face {
+    font-family: poke;
+    src: url(../font/Pokemon\ Solid.ttf);
+}
+
+.who {
+    font-family: poke;
+    font-size: 4rem;
+    -webkit-text-stroke: 3px #3D7DCA;
+    -webkit-text-fill-color: #FFCB05;
+}
+
+.bg-pikachu {
+    background-color: transparent;
+    ;
+}
+
 main {
     margin-top: 0;
     background-image: url(../img/pokemon-lets-go-pikachu-eevee.jpg);
@@ -75,4 +102,14 @@ img {
 
 .atributos {
     font-weight: 700;
+}
+
+.btn-outline-primary:hover {
+    background-color: #FFCB05;
+    color: #3D7DCA;
+}
+
+.form-control {
+    outline: none;
+    border: none;
 }

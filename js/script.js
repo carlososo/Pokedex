@@ -18,66 +18,15 @@
     let hielo = "#51C4E7";
     let dragon = "#f16e57";
     let siniestro = "#707070";
+    let buscar = document.getElementById('buscar');
 
-    function modalPokemon() {
-
-
-    }
     for (let i = 0; i <= pokemons.length - 1; i++) {
-
-        let fila = document.getElementById('fila');
-        let carta = document.createElement('div');
-        carta.classList.add('col-xl-3');
-        carta.classList.add('col-lg-4');
-        carta.classList.add('col-md-6');
-        carta.classList.add('justify-content-between');
-        carta.classList.add('cartas')
-        carta.setAttribute('id', pokemons[i].id);
-        carta.innerHTML = `<div class="card borde mt-5" >
-        
-                                <figure class="borde fondo-imagen ">
-                                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${idPokemon(pokemons[i].id)}.png " class="card-img-top " alt="... ">
-                                </figure>
-                                <div class="card-body ">
-                                    <p class="text-muted " id=" ">N. ${idPokemon(pokemons[i].id)}</p>
-                                    <p id="nombre${idPokemon(pokemons[i].id)} ">${pokemons[i].name.english}</p>
-                                    <div class="d-flex justify-content-center ">
-                                        <div class="tipo1 mr-5">
-                                            <p class="ptipo1">${pokemons[i].type[0]}</p>
-                                        </div>
-                                        <div class="tipo2 ">
-                                            <p class="ptipo2">${pokemons[i].type[1]}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`
-
-
-        fila.appendChild(carta)
-
-        carta.addEventListener('click', function(event) {
-            $('#exampleModal').modal('show');
-            document.getElementById('exampleModalLabel').innerHTML = pokemons[i].name.english;
-            document.getElementById('imagenModal').setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${idPokemon(pokemons[i].id)}.png`)
-            document.getElementById('english').innerHTML = "   " + pokemons[i].name.english;
-            document.getElementById('japanese').innerHTML = "   " + pokemons[i].name.japanese;
-            document.getElementById('hp').innerHTML = "   " + pokemons[i].base.HP;
-            document.getElementById('att').innerHTML = "   " + pokemons[i].base.Attack;
-            document.getElementById('def').innerHTML = "   " + pokemons[i].base.Defense;
-            document.getElementById('satt').innerHTML = "   " + pokemons[i].base["Sp. Attack"];
-            document.getElementById('sdef').innerHTML = "   " + pokemons[i].base["Sp. Defense"];
-            document.getElementById('spd').innerHTML = "   " + pokemons[i].base.Speed
-        });
+        insertarPokemons(pokemons[i]);
     }
-
-
-
     let tipoPokemon = document.getElementsByClassName('tipo1');
     let tipoPokemon2 = document.getElementsByClassName('tipo2');
-
     cambiarColor(tipoPokemon, 'ptipo1');
     cambiarColor(tipoPokemon2, 'ptipo2');
-
     //funcion para cambiar de color a los botones dependiendo de las clases de los Pokemones
     function cambiarColor(tipo, content) {
         for (let elementosP in tipo) {
@@ -148,7 +97,6 @@
             }
         }
     }
-
     //funcion para sacar los 00 y 0 para las fotos chiditas de los pokemons 
     function idPokemon(data) {
         data = data + "";
@@ -161,11 +109,68 @@
         } else
             return data;
     }
+    // funcion para busqueda de pokemon
+    buscar.addEventListener('click', function() {
+        let busqueda = document.getElementById('busqueda').value;
+        busqueda = busqueda.trim();
+        let busquedaPokemons = [];
+        let fila = document.getElementById('fila');
+        fila.innerHTML = "";
+        for (let p in pokemons) {
+            if (pokemons[p].name.english.includes(busqueda) || pokemons[p].id == busqueda) {
+                busquedaPokemons.push(pokemons[p])
+                insertarPokemons(pokemons[p], 'center');
+            }
+        }
+        cambiarColor(tipoPokemon, 'ptipo1');
+        cambiarColor(tipoPokemon2, 'ptipo2');
 
 
-    // funcion para el modal con la informacion del pokemon
+    });
+    //funcion para la insertada de Pokemos y evitar código repetido
+    function insertarPokemons(elementos) {
+        let fila = document.getElementById('fila');
+        let carta = document.createElement('div');
+        carta.classList.add('col-xl-3');
+        carta.classList.add('col-lg-4');
+        carta.classList.add('col-md-6');
+        carta.classList.add(`justify-content-between`);
+        carta.classList.add('cartas')
+        carta.setAttribute('id', elementos.id);
+        carta.innerHTML = `<div class="card borde my-4" >
+                    <figure class="borde fondo-imagen ">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${idPokemon(elementos.id)}.png " class="card-img-top " alt="... ">
+                    </figure>
+                    <div class="card-body ">
+                    <p class="text-muted " id=" ">N. ${idPokemon(elementos.id)}</p>
+                    <p id="nombre${idPokemon(elementos.id)} ">${elementos.name.english}</p>
+                    <div class="d-flex justify-content-center ">
+                        <div class="tipo1 mr-5">
+                            <p class="ptipo1">${elementos.type[0]}</p>
+                        </div>
+                        <div class="tipo2 ">
+                            <p class="ptipo2">${elementos.type[1]}</p>
+                        </div>
+                    </div>
+                    </div>
+                    </div>`
 
 
+        fila.appendChild(carta)
+        carta.addEventListener('click', function(event) {
+            $('#exampleModal').modal('show');
+            document.getElementById('exampleModalLabel').innerHTML = elementos.name.english;
+            document.getElementById('imagenModal').setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${idPokemon(elementos.id)}.png`)
+            document.getElementById('english').innerHTML = "   " + elementos.name.english;
+            document.getElementById('japanese').innerHTML = "   " + elementos.name.japanese;
+            document.getElementById('hp').innerHTML = "   " + elementos.base.HP;
+            document.getElementById('att').innerHTML = "   " + elementos.base.Attack;
+            document.getElementById('def').innerHTML = "   " + elementos.base.Defense;
+            document.getElementById('satt').innerHTML = "   " + elementos.base["Sp. Attack"];
+            document.getElementById('sdef').innerHTML = "   " + elementos.base["Sp. Defense"];
+            document.getElementById('spd').innerHTML = "   " + elementos.base.Speed
+        });
+    }
 
 
 
