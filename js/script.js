@@ -121,7 +121,9 @@
                 busquedaPokemons.push(pokemons[p])
                 insertarPokemons(pokemons[p], 'center');
             } else {
-                alert('Whooops! nothing here to find, hombre')
+                alert('Whooops! nothing here to find, hombre');
+                location.reload(true);
+                break;
             }
         }
         cambiarColor(tipoPokemon, 'ptipo1');
